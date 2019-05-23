@@ -135,9 +135,6 @@ $logError1 = new ErrorFromLog("/path/to/file/1:200 Some error 3");
 $logError2 = new ErrorFromLog("/path/to/file/3:100 Some error 2");
 
 
-/**
- * Class BookAdapter
- */
 class ErrorReportFromLogAdapter implements IErrorReport
 {
     /**
