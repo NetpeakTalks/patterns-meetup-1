@@ -132,7 +132,7 @@ class ErrorFromLog
 }
 
 $logError1 = new ErrorFromLog("/path/to/file/1:200 Some error 3");
-$logError2 = new ErrorFromLog("/path/to/file/3:100 Some error 2");
+$logError2 = new ErrorFromLog("/path/to/file/3|100|Some error 2");
 
 
 class ErrorReportFromLogAdapter implements IErrorReport
@@ -150,9 +150,9 @@ class ErrorReportFromLogAdapter implements IErrorReport
     {
         $data = explode(':', $error->name);
         $path = trim($data[0]);
-        $data2 = explode(':', $data[1]);
+        $data2 = explode(' ', $data[1]);
         $line = (int)trim($data2[0]);
-        $msg = trim($data2[1]);
+        $msg = implode(" ", trim($data2[1]));
 
         $this->error = new SimpleErrorReport($path, $line, $msg);
     }
